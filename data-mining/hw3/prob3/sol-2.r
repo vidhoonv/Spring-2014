@@ -1,5 +1,5 @@
 #load data
-trainData = read.csv("Machine1.csv", header = TRUE)
+trainData = read.csv("Machine2.csv", header = TRUE)
 testData = read.csv("Machinetest.csv", header = TRUE)
 
 #load rpart
