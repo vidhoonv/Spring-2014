@@ -26,12 +26,14 @@ calcMAE = function(predictedY,target) {
 	return(mean(error))
 }
 
-#calcMAE method
+#calcRsq method
 calcRsq = function(predictedY,target) {
 	errsq = (predictedY-target)^2
 	meansq = (target-mean(target))^2
 	
 	frac = sum(errsq)/sum(meansq)
+	print(sum(errsq))
+	print(sum(meansq))
 	rsq = 1-frac
 
 	return(rsq)
@@ -177,3 +179,10 @@ print(svrTestRsq)
 print("MLR Test r-squared:")
 print(mlrTestSummary$r.squared)
 
+
+#print R-squared results
+print("RT calc test r-squared:")
+print(calcRsq(ptTestOut,testData_y))
+
+print("MLR calc test r-squared:")
+print(calcRsq(mlrTestOut,testData_y))

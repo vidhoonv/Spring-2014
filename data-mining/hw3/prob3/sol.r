@@ -171,9 +171,8 @@ print(mlrTestMAE)
 
 #print R-squared results
 print("RT Test r-squared:")
-print(ptTestCP.rsq[nrow(ptTestCP.rsq),1])
+print(calcRsq(ptTestOut,testData_y))
 print("SVR Test r-squared:")
 print(svrTestRsq)
 print("MLR Test r-squared:")
-print(mlrTestSummary$r.squared)
-
+print(calcRsq(mlrTestOut,testData_y))
