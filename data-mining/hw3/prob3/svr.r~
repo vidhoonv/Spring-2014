@@ -1,0 +1,24 @@
+#load data
+trainData = read.csv("Machine1.csv", header = TRUE)
+testData = read.csv("Machinetest.csv", header = TRUE)
+
+#seperate X and Y in train and test data
+trainData_x = trainData[,-1];
+trainData_y = trainData[,1];
+
+testData_x = testData[,-1];
+testData_y = testData[,1];
+
+
+#load kernlab
+library('kernlab')
+
+mySvr =  ksvm(PRP	~ MYCT+MMIN+MMAX+CACH+CHMIN+CHMAX,data=trainData,scaled=TRUE,type="nu-svr",kernel="vanilladot", kpar="automatic", class.weights=NULL,cache=100,cross=5);
+
+testOut = predict(mySvr,data=testData,type="response");
+
+print(testOut);
+
+#plot(testOut);
+#points(testData_y,col='red');
+
