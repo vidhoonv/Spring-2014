@@ -48,3 +48,5 @@ multiLevelModel =  lme(height~year, data=trainData, random=list(id=pdDiag(~year)
 multiLevelTestOut = predict(multiLevelModel, newdata=testData, level=1)
 print('MSE for multi level model:')
 print(calcMSE(multiLevelTestOut,testData$height))
+
+ #model3 = lme(height~year, data=trainData,random = ~ 1 + year|id)

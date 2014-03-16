@@ -185,7 +185,7 @@ filename = paste(getwd(),"/testRMSE-plot-",rate[rateIndex],".png",sep='');
 png(filename);
 plot(testRMSE[1:i],col="red",pch="+");
 points(i,sqrt(mean(erTestLm^2)),col="blue",pch="*");
-legend("topright",legend=c("SGD-trainRMSE","LM-trainRMSE"),pch=c("+","*"),col=c("red","blue"));
+legend("topright",legend=c("SGD-testRMSE","LM-testRMSE"),pch=c("+","*"),col=c("red","blue"));
 dev.off();
 
 }

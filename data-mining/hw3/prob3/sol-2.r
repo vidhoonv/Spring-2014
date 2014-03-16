@@ -32,8 +32,6 @@ calcRsq = function(predictedY,target) {
 	meansq = (target-mean(target))^2
 	
 	frac = sum(errsq)/sum(meansq)
-	print(sum(errsq))
-	print(sum(meansq))
 	rsq = 1-frac
 
 	return(rsq)
@@ -62,7 +60,7 @@ myPrunedTree <- prune(myTree,cpIndex)
 
 
 #plot tree
-png("RT.png")
+png("RT-2.png")
 par(xpd = TRUE)
 plot(myPrunedTree,compress=T,branch=0,uniform=T)
 text(myPrunedTree,use.n=T,fancy=T,all=T)
@@ -122,11 +120,20 @@ mlrTestMAE = calcMAE(mlrTestOut, testData_y);
 mlrTestSummary = summary(myMlr)
 
 #plot of results from all three models
-png("predict-results.png")
-plot(mlrTestOut,xlab="testcase",ylab="PRP",ylim=c(1,700))
+png("test-results-ver2.png")
+plot(mlrTestOut,xlab="testcase",ylab="PRP",ylim=c(1,700),main="Testing Data prediction")
 points(ptTestOut,col='red')
 points(svrTestOut,col='blue')
 points(testData_y,col='green')
+legend("top",legend=c("MLR","RT","SVR","target"),pch='o',col=c("black","red","blue","green"));
+dev.off()
+
+#plot of results from all three models
+png("train-results-ver2.png")
+plot(mlrTrainOut,xlab="testcase",ylab="PRP",ylim=c(1,700),main="Training Data prediction")
+points(ptTrainOut,col='red')
+points(svrTrainOut,col='blue')
+points(trainData_y,col='green')
 legend("top",legend=c("MLR","RT","SVR","target"),pch='o',col=c("black","red","blue","green"));
 dev.off()
 
